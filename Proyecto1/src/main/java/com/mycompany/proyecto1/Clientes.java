@@ -4,14 +4,28 @@
  */
 package com.mycompany.proyecto1;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import javax.persistence.Table;
+
 /**
  *
  * @author lestu
  */
+@Entity
+@Table(name = "clientes")
 public class Clientes {
-    String nit;
-    String nombre;
-    String correo;
+
+    @Id
+    @Column(name = "nit", length = 13, nullable = false)
+    private String nit;
+
+    @Column(name = "nombre", length = 25)
+    private String nombre;
+
+    @Column(name = "correo", length = 25)
+    private String correo;
 
     public Clientes() {
     }
@@ -39,6 +53,5 @@ public class Clientes {
     public void setCorreo(String correo) {
         this.correo = correo;
     }
-    
-    
+
 }

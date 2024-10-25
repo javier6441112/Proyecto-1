@@ -4,23 +4,54 @@
  */
 package com.mycompany.proyecto1;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import javax.persistence.Table;
+
 /**
  *
  * @author lestu
  */
+@Entity
+@Table(name = "Productos_pedido")
 public class ProductoPedido {
-    Integer id;
-    Integer cantidad;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_Productos_pedido")
+    private Integer idProductosPedido;
+
+    @Column(name = "cantidad")
+    private Integer cantidad;
+
+    @Column(name = "id_produccto")
+    private Integer idProducto;
+
+    @ManyToOne
+    @JoinColumn(name = "id_produccto", referencedColumnName = "id_produccto", insertable = false, updatable = false)
+    private Productos productos;
 
     public ProductoPedido() {
     }
 
-    public Integer getId() {
-        return id;
+    public ProductoPedido(Integer idProductosPedido, Integer cantidad, Integer idProducto, Productos productos) {
+        this.idProductosPedido = idProductosPedido;
+        this.cantidad = cantidad;
+        this.idProducto = idProducto;
+        this.productos = productos;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public Integer getIdProductosPedido() {
+        return idProductosPedido;
+    }
+
+    public void setIdProductosPedido(Integer idProductosPedido) {
+        this.idProductosPedido = idProductosPedido;
     }
 
     public Integer getCantidad() {
@@ -30,6 +61,21 @@ public class ProductoPedido {
     public void setCantidad(Integer cantidad) {
         this.cantidad = cantidad;
     }
-    
-    
+
+    public Integer getIdProducto() {
+        return idProducto;
+    }
+
+    public void setIdProducto(Integer idProducto) {
+        this.idProducto = idProducto;
+    }
+
+    public Productos getProductos() {
+        return productos;
+    }
+
+    public void setProductos(Productos productos) {
+        this.productos = productos;
+    }
+
 }

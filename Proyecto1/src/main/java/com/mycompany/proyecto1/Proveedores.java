@@ -4,26 +4,47 @@
  */
 package com.mycompany.proyecto1;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import javax.persistence.Table;
+
 /**
  *
  * @author lestu
  */
+@Entity
+@Table(name = "proveedores")
 public class Proveedores {
-    String id;
-    String nombre;
-    String direccion;
-    String categoria;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_proveedor")
+    private String idProveedor;
+
+    @Column(name = "nombre", length = 25)
+    private String nombre;
+
+    @Column(name = "direccion", length = 30)
+    private String direccion;
+
+    @Column(name = "categoria", length = 20)
+    private String categoria;
 
     public Proveedores() {
     }
 
-    public String getId() {
-        return id;
+    public String getIdProveedor() {
+        return idProveedor;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setIdProveedor(String idProveedor) {
+        this.idProveedor = idProveedor;
     }
+
+
 
     public String getNombre() {
         return nombre;
@@ -48,6 +69,5 @@ public class Proveedores {
     public void setCategoria(String categoria) {
         this.categoria = categoria;
     }
-
 
 }

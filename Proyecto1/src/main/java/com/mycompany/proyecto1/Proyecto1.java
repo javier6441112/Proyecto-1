@@ -13,22 +13,22 @@ import java.util.Scanner;
 public class Proyecto1 {
     
  public void ejecutable (){
-   DaoCrudJSON daoCrudJSON = new DaoCrudJSON ();
-       Datos datos = daoCrudJSON.leer();
-      System.out.println(datos.getClientes().get(0).getNombre());
-      System.out.println(datos.getPedidos().get(0).getCliente());
+//   DaoCrudJSON daoCrudJSON = new DaoCrudJSON ();
+//       Datos datos = daoCrudJSON.leer();
+//      System.out.println(datos.getClientes().get(0).getNombre());
+////      System.out.println(datos.getPedidos().get(0).getCliente());
  }
  
  public void insetar (){
-    DaoCrudJSON daoCrudJSON = new DaoCrudJSON ();
-     ControlPedidos controlPedidos = new ControlPedidos();
-     
-     ControlPedido controlPedido = new ControlPedido();
-     controlPedido.setCliente("javier");
-     controlPedido.setEstadoPedido("finalizado");
-     controlPedido.setId(1);
-     controlPedidos.getControlPedidos().add(controlPedido);
-daoCrudJSON.InsertPedido(controlPedidos);
+//    DaoCrudJSON daoCrudJSON = new DaoCrudJSON ();
+//     ControlPedidos controlPedidos = new ControlPedidos();
+//     
+//     ControlPedido controlPedido = new ControlPedido();
+//     controlPedido.setCliente("javier");
+//     controlPedido.setEstadoPedido("finalizado");
+//     controlPedido.setId(1);
+//     controlPedidos.getControlPedidos().add(controlPedido);
+//daoCrudJSON.InsertPedido(controlPedidos);
  }
        
     public static void main(String[] args) {

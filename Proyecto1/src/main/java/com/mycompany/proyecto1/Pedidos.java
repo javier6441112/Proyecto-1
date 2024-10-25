@@ -4,21 +4,47 @@
  */
 package com.mycompany.proyecto1;
 
-import java.util.ArrayList;
-import java.util.List;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import java.time.LocalDateTime;
+import javax.persistence.Table;
 
 /**
  *
  * @author lestu
  */
-
+@Entity
+@Table(name = "pedidos")
 public class Pedidos {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_pedido")
     Integer id;
-    String fecha;
-    String cliente;
-    List<ProductoPedido> productos = new ArrayList();
+
+    @Column(name = "fecha")
+    private LocalDateTime fecha;
+
+    @Column(name = "nit", length = 13)
+    private String nit;
+
+    @ManyToOne
+    @JoinColumn(name = "nit", referencedColumnName = "nit", insertable = false, updatable = false)
+    private Clientes Clientes;
 
     public Pedidos() {
+    }
+
+    public Pedidos(Integer id, LocalDateTime fecha, String nit, Clientes Clientes) {
+        this.id = id;
+        this.fecha = fecha;
+        this.nit = nit;
+        this.Clientes = Clientes;
     }
 
     public Integer getId() {
@@ -29,29 +55,29 @@ public class Pedidos {
         this.id = id;
     }
 
-    public String getFecha() {
+    public LocalDateTime getFecha() {
         return fecha;
     }
 
-    public void setFecha(String fecha) {
+    public void setFecha(LocalDateTime fecha) {
         this.fecha = fecha;
     }
 
-    public String getCliente() {
-        return cliente;
+    public String getNit() {
+        return nit;
     }
 
-    public void setCliente(String cliente) {
-        this.cliente = cliente;
+    public void setNit(String nit) {
+        this.nit = nit;
     }
 
-    public List<ProductoPedido> getProductos() {
-        return productos;
+    public Clientes getClientes() {
+        return Clientes;
     }
 
-    public void setProductos(List<ProductoPedido> productos) {
-        this.productos = productos;
+    public void setClientes(Clientes Clientes) {
+        this.Clientes = Clientes;
     }
-    
-    
+
+
 }
