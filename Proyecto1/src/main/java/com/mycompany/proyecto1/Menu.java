@@ -4,12 +4,19 @@
  */
 package com.mycompany.proyecto1;
 
+import java.awt.event.ItemEvent;
+import javax.swing.JFrame;
+
 /**
  *
  * @author user
  */
 public class Menu extends javax.swing.JPanel {
-
+    private OrdenCompraGUI orden;
+    private OrdenVenta venta;
+    private Produccion produccion;
+    private Importacion importacion;
+    private Facturacion facturacion;
     /**
      * Creates new form Menu
      */
@@ -29,9 +36,10 @@ public class Menu extends javax.swing.JPanel {
         jPanel1 = new javax.swing.JPanel();
         jTextField1 = new javax.swing.JTextField();
         jTextField2 = new javax.swing.JTextField();
-        jComboBox2 = new javax.swing.JComboBox<>();
+        jComboBox1 = new javax.swing.JComboBox<>();
 
         setBackground(new java.awt.Color(255, 255, 255));
+        setMinimumSize(new java.awt.Dimension(100, 100));
 
         jPanel1.setBackground(new java.awt.Color(204, 222, 255));
 
@@ -64,10 +72,10 @@ public class Menu extends javax.swing.JPanel {
         jTextField2.setEditable(false);
         jTextField2.setText("selecciona lo que deseas hacer");
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ver clientes ", "Crear pedidos", "ver pedidos", "cambiar estado producto" }));
-        jComboBox2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox2ActionPerformed(evt);
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "seleccione aquí", "orden de compra", "orden de venta", "produccion", "importacion", "facturacion" }));
+        jComboBox1.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jComboBox1ItemStateChanged(evt);
             }
         });
 
@@ -75,30 +83,30 @@ public class Menu extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(17, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(14, 14, 14))
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap(377, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(96, 96, 96)
-                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(161, 161, 161)
-                        .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(14, 14, 14))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(349, 349, 349))))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(361, 361, 361)
+                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 349, Short.MAX_VALUE)
                 .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(173, Short.MAX_VALUE))
+                .addGap(69, 69, 69)
+                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(106, 106, 106))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -106,28 +114,68 @@ public class Menu extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
 
-    private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
-                                        
-    // Captura el elemento seleccionado
-    String seleccion = (String) jComboBox2.getSelectedItem();
-    
-    // Muestra un mensaje o realiza una acción basada en la selección
-    System.out.println("Has seleccionado: " + seleccion);
-    
-    // Puedes implementar lógica condicional
-    if ("Opción A".equals(seleccion)) {
-        // Realiza una acción para Opción A
-    } else if ("Opción B".equals(seleccion)) {
-        // Realiza una acción para Opción B
-    }
-    // Agrega más condiciones según sea necesario
-
-
-    }//GEN-LAST:event_jComboBox2ActionPerformed
+    private void jComboBox1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBox1ItemStateChanged
+        // TODO add your handling code here:
+        if (evt.getStateChange() == ItemEvent.SELECTED) {
+            // Obtener el valor seleccionado
+            String selectedItem = (String) evt.getItem();
+            if (selectedItem.equalsIgnoreCase("orden de compra")) {
+                if (orden == null || !orden.isVisible()) {
+                    orden = new OrdenCompraGUI();
+                    orden.setVisible(true);
+                } else {
+                    orden.toFront();
+                    orden.requestFocus();
+                }  
+                orden.setVisible(true);
+                orden.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+            } else if (selectedItem.equalsIgnoreCase("orden de venta")) {
+                if (venta == null || !venta.isVisible()) {
+                    venta = new OrdenVenta();
+                    venta.setVisible(true);
+                } else {
+                    venta.toFront();
+                    venta.requestFocus();
+                } 
+                venta.setVisible(true);
+                venta.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+            } else if (selectedItem.equalsIgnoreCase("produccion")) {
+                if (produccion == null || !produccion.isVisible()) {
+                    produccion = new Produccion();
+                    produccion.setVisible(true);
+                } else {
+                    produccion.toFront();
+                    produccion.requestFocus();
+                }
+                produccion.setVisible(true);
+                produccion.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+            } else if (selectedItem.equalsIgnoreCase("importacion")) {
+                if (importacion == null || !importacion.isVisible()) {
+                    importacion = new Importacion();
+                    importacion.setVisible(true);
+                } else {
+                    importacion.toFront();
+                    importacion.requestFocus();
+                }
+                importacion.setVisible(true);
+                importacion.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+            } else if (selectedItem.equalsIgnoreCase("facturacion")) {
+                if (facturacion == null || !facturacion.isVisible()) {
+                    facturacion = new Facturacion();
+                    facturacion.setVisible(true);
+                } else {
+                    facturacion.toFront();
+                    facturacion.requestFocus();
+                }
+                facturacion.setVisible(true);
+                facturacion.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+            }
+        }
+    }//GEN-LAST:event_jComboBox1ItemStateChanged
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> jComboBox2;
+    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;

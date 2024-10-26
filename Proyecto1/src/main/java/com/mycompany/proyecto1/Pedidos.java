@@ -34,18 +34,20 @@ public class Pedidos {
     @Column(name = "nit", length = 13)
     private String nit;
 
-    @ManyToOne
-    @JoinColumn(name = "nit", referencedColumnName = "nit", insertable = false, updatable = false)
-    private Clientes Clientes;
+    @Column(name = "estado_pedido")
+    private Long estadoPedido;
+
+//    @ManyToOne
+//    @JoinColumn(name = "nit", referencedColumnName = "nit", insertable = false, updatable = false)
+//    private Clientes Clientes;
 
     public Pedidos() {
     }
 
-    public Pedidos(Integer id, LocalDateTime fecha, String nit, Clientes Clientes) {
+    public Pedidos(Integer id, LocalDateTime fecha, String nits) {
         this.id = id;
         this.fecha = fecha;
         this.nit = nit;
-        this.Clientes = Clientes;
     }
 
     public Integer getId() {
@@ -72,13 +74,11 @@ public class Pedidos {
         this.nit = nit;
     }
 
-    public Clientes getClientes() {
-        return Clientes;
+    public Long getEstadoPedido() {
+        return estadoPedido;
     }
 
-    public void setClientes(Clientes Clientes) {
-        this.Clientes = Clientes;
+    public void setEstadoPedido(Long estadoPedido) {
+        this.estadoPedido = estadoPedido;
     }
-
-
 }

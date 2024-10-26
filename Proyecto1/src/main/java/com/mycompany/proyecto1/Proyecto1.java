@@ -5,9 +5,12 @@ package com.mycompany.proyecto1;
 
 import java.util.Scanner;
 import javax.swing.JFrame;
+
+import com.mycompany.proyecto1.Repositorys.ClientesRepo;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.Bean;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 /**
@@ -18,38 +21,31 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @EnableJpaRepositories(basePackages = {"com.mycompany.proyecto1.Repositorys"})
 public class Proyecto1 {
 
-    public void ejecutable() {
-//   DaoCrudJSON daoCrudJSON = new DaoCrudJSON ();
-//       Datos datos = daoCrudJSON.leer();
-//      System.out.println(datos.getClientes().get(0).getNombre());
-////      System.out.println(datos.getPedidos().get(0).getCliente());
-    }
 
-    public void insetar() {
-
-//    DaoCrudJSON daoCrudJSON = new DaoCrudJSON ();
-//     ControlPedidos controlPedidos = new ControlPedidos();
-//     
-//     ControlPedido controlPedido = new ControlPedido();
-//     controlPedido.setCliente("javier");
-//     controlPedido.setEstadoPedido("finalizado");
-//     controlPedido.setId(1);
-//     controlPedidos.getControlPedidos().add(controlPedido);
-//daoCrudJSON.InsertPedido(controlPedidos);
-    }
 
     public static void main(String[] args) {
-        JFrame frame = new JFrame("El Tunas");
-        frame.setSize(300, 200);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        Menu menuGrafico = new Menu();
-        frame.add(menuGrafico);
-         frame.setVisible(true);
+
 
         // Inicializa el contexto de Spring
         ApplicationContext context = SpringApplication.run(Proyecto1.class, args);
         // Obtiene el bean de la clase Creacion
         Creacion creacion = context.getBean(Creacion.class);
+
+        System.setProperty("java.awt.headless", "false");
+
+
+        MenuGUI menuGUI = new MenuGUI(creacion);
+        menuGUI.setVisible(true);
+        menuGUI.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+//        JFrame frame = new JFrame("El Tunas");
+//        frame.setSize(800, 500);
+//        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//        Menu menuGrafico = new Menu();
+//        frame.add(menuGrafico);
+//        frame.setVisible(true);
+
+
 
         //        Proyecto1 proyecto1= new Proyecto1();
         //        proyecto1.insetar();

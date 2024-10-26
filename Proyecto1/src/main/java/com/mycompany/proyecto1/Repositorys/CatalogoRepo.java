@@ -17,6 +17,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface CatalogoRepo extends JpaRepository <Catalogo, Object>{
     
-       @Query("select c from Catalogo c ")
-    List<Catalogo> findCatalogo(); 
+   /*@Query("select c from Catalogo c ")
+    List<Catalogo> findCatalogo(); */
 }

@@ -4,10 +4,11 @@
  */
 package com.mycompany.proyecto1;
 
-import com.mycompany.proyecto1.Repositorys.CatalogoRepo;
-import com.mycompany.proyecto1.Repositorys.ClientesRepo;
+import com.mycompany.proyecto1.Repositorys.*;
+
 import java.util.List;
 import java.util.Scanner;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -23,6 +24,16 @@ public class Creacion {
     
     @Autowired
     ClientesRepo clientesRepo;
+
+    @Autowired
+    ProductosPedidoRepo productosPedidoRepo;
+
+    @Autowired
+    ProductoRepo productoRepo;
+
+    @Autowired
+    PedidoRepo pedidosRepo;
+
 
     DaoCrudJSON daoCrudJSON = new DaoCrudJSON();
     Datos datos = new Datos();
@@ -69,9 +80,9 @@ public class Creacion {
 
     public void crearPedido() {
 
-        List<Catalogo> catalogo = catalogoRepo.findCatalogo();
-//        catalogo.toString();
-        System.out.println(catalogo.get(0).getDescripcion());
+//        List<Catalogo> catalogo = catalogoRepo.findCatalogo();
+////        catalogo.toString();
+//        System.out.println(catalogo.get(0).getDescripcion());
         
 //        datos = daoCrudJSON.leer();
 //        Scanner sp = new Scanner(System.in);
