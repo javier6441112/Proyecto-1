@@ -4,8 +4,11 @@
  */
 package com.mycompany.proyecto1.Repositorys;
 
+import com.mycompany.proyecto1.ClientePedidos;
 import com.mycompany.proyecto1.Clientes;
+import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -14,5 +17,6 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public interface ClientesRepo extends JpaRepository <Clientes, Object>{
-    
+    @Query("select * from clientes c inner join pedidos p c.nit = p.nit")
+    List<ClientePedidos> findAllPedidos();   
 }
