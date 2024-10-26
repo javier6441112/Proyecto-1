@@ -2,14 +2,17 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Interface.java to edit this template
  */
-package com.mycompany.proyecto1;
+package com.mycompany.proyecto1.Repositorys;
 
+import com.mycompany.proyecto1.Clientes;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
 /**
  *
  * @author user
  */
-public interface Repositorio extends JpaRepository <ControlPedido, Object>{
+@Repository
+public interface ClientesRepo extends JpaRepository <Clientes, Object>{
     
 }

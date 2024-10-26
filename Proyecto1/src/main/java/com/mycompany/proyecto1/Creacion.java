@@ -4,23 +4,45 @@
  */
 package com.mycompany.proyecto1;
 
-import java.util.ArrayList;
+import com.mycompany.proyecto1.Repositorys.CatalogoRepo;
+import com.mycompany.proyecto1.Repositorys.ClientesRepo;
 import java.util.List;
 import java.util.Scanner;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 /**
  *
  * @author lestu
  */
+@Service
 public class Creacion {
+
+    @Autowired
+    CatalogoRepo catalogoRepo;
+    
+    @Autowired
+    ClientesRepo clientesRepo;
 
     DaoCrudJSON daoCrudJSON = new DaoCrudJSON();
     Datos datos = new Datos();
     ControlPedidos controlPedidos = new ControlPedidos();
 
+//    public void crearCliente() {
+//        Scanner sp = new Scanner(System.in);
+//        datos = daoCrudJSON.leer();
+//        Clientes cliente = new Clientes();
+//        System.out.println("ingrese el nombre");
+//        cliente.setNombre(sp.nextLine());
+//        System.out.println("ingresa el correo");
+//        cliente.setCorreo(sp.nextLine());
+//        System.out.println("ingresa el nit");
+//        cliente.setNit(sp.nextLine());
+//        datos.getClientes().add(cliente);
+//        daoCrudJSON.Insert(datos);
+//    }
     public void crearCliente() {
         Scanner sp = new Scanner(System.in);
-        datos = daoCrudJSON.leer();
         Clientes cliente = new Clientes();
         System.out.println("ingrese el nombre");
         cliente.setNombre(sp.nextLine());
@@ -28,22 +50,29 @@ public class Creacion {
         cliente.setCorreo(sp.nextLine());
         System.out.println("ingresa el nit");
         cliente.setNit(sp.nextLine());
-        datos.getClientes().add(cliente);
-        daoCrudJSON.Insert(datos);
+        
+        clientesRepo.save(cliente);
+
     }
 
-    public void mostrarClientes() {
-        datos = daoCrudJSON.leer();
-        for (Clientes cliente : datos.getClientes()) {
+    public List<Clientes> mostrarClientes() {
+        List<Clientes> clientes = clientesRepo.findAll();
+        for (Clientes cliente : clientes) {
             System.out.println("---------------------------------");
             System.out.println("el nombre es: " + cliente.getNombre());
             System.out.println("el nit es: " + cliente.getNit());
             System.out.println("el correo es: " + cliente.getCorreo());
             System.out.println("---------------------------------");
         }
+        return clientes;
     }
 
     public void crearPedido() {
+
+        List<Catalogo> catalogo = catalogoRepo.findCatalogo();
+//        catalogo.toString();
+        System.out.println(catalogo.get(0).getDescripcion());
+        
 //        datos = daoCrudJSON.leer();
 //        Scanner sp = new Scanner(System.in);
 //        int i = 1;
